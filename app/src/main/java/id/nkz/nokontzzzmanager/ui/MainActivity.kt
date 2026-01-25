@@ -115,6 +115,27 @@ class MainActivity : ComponentActivity() {
     val processMonitorFabVisible = mutableStateOf(false)
     val processMonitorFabAction: MutableState<(() -> Unit)?> = mutableStateOf(null)
 
+    private fun getKernelName(): String {
+    return try {
+        val process = Runtime.getRuntime().exec("uname -r")
+        val reader = BufferedReader(InputStreamReader(process.inputStream))
+        reader.readLine().trim()
+    } catch (e: Exception) {
+        Build.VERSION.RELEASE // fallback لو فشل
+    }
+}
+
+private fun getBuildHost(): String {
+    return try {
+        val process = Runtime.getRuntime().exec("uname -a")
+        val reader = BufferedReader(InputStreamReader(process.inputStream))
+        val output = reader.readLine()
+        output.split(" ").lastOrNull() ?: "unknown"
+    } catch (e: Exception) {
+        "unknown"
+    }
+}
+    
     @OptIn(ExperimentalMaterial3Api::class, ExperimentalMaterial3ExpressiveApi::class)
     @RequiresApi(Build.VERSION_CODES.S)
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -570,27 +591,6 @@ class MainActivity : ComponentActivity() {
             notifPermissionLauncher?.launch(Manifest.permission.POST_NOTIFICATIONS)
         }
     }
-
-private fun getKernelName(): String {
-    return try {
-        val process = Runtime.getRuntime().exec("uname -r")
-        val reader = BufferedReader(InputStreamReader(process.inputStream))
-        reader.readLine().trim()
-    } catch (e: Exception) {
-        Build.VERSION.RELEASE // fallback لو فشل
-    }
-}
-
-private fun getBuildHost(): String {
-    return try {
-        val process = Runtime.getRuntime().exec("uname -a")
-        val reader = BufferedReader(InputStreamReader(process.inputStream))
-        val output = reader.readLine()
-        output.split(" ").lastOrNull() ?: "unknown"
-    } catch (e: Exception) {
-        "unknown"
-    }
-}
     
     private fun isKernelSupported(): Boolean {
 
