@@ -28,7 +28,7 @@ jobs:
       run: ./gradlew assembleRelease --stacktrace --info
 
     - name: Upload APK artifact
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: Jo-Kernel-Manager-Release
         path: app/build/outputs/apk/release/app-release.apk
