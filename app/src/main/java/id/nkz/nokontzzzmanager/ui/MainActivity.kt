@@ -572,7 +572,8 @@ class MainActivity : ComponentActivity() {
             "N0Kontzzz",
             "FusionX",
             "perf+",
-            "Oxygen+"
+            "Oxygen+",
+            "JoKernel"
         )
 
         val lunarSupportedHosts = listOf(
@@ -602,6 +603,10 @@ class MainActivity : ComponentActivity() {
             "danda@pavilion"
         )
 
+        val jokernelSupportedHosts = listOf(
+            "JO@Jo_0012"
+        )
+        
         try {
             var versionLine: String?
 
@@ -620,6 +625,11 @@ class MainActivity : ComponentActivity() {
                 if (versionLine.contains("4.19.404R", ignoreCase = true) && 
                     versionLine.contains("vyn@zorin", ignoreCase = true)) {
                     return true
+                }
+
+            if (kernelName.lowercase() == "jokernel") {
+                    val buildHost = utsname.machine
+                    return jokernelSupportedHosts.any { it.equals(buildHost, ignoreCase = true) }
                 }
 
                 for (signature in supportedSignatures) {
