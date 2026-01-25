@@ -71,6 +71,11 @@ import id.nkz.nokontzzzmanager.utils.LocaleHelper
 import id.nkz.nokontzzzmanager.viewmodel.MainViewModel
 import id.nkz.nokontzzzmanager.viewmodel.KernelLogViewModel
 
+        // في بداية الدالة isKernelSupported أو أي دالة بتشيك الكيرنل
+import android.os.Build
+import java.io.BufferedReader
+import java.io.InputStreamReader
+
 val Context.dataStore: DataStore<Preferences> by preferencesDataStore(name = "settings")
 
 @AndroidEntryPoint
@@ -566,7 +571,37 @@ class MainActivity : ComponentActivity() {
         }
     }
 
+private fun getKernelName(): String {
+    return try {
+        val process = Runtime.getRuntime().exec("uname -r")
+        val reader = BufferedReader(InputStreamReader(process.inputStream))
+        reader.readLine().trim()
+    } catch (e: Exception) {
+        Build.VERSION.RELEASE // fallback لو فشل
+    }
+}
+
+private fun getBuildHost(): String {
+    return try {
+        val process = Runtime.getRuntime().exec("uname -a")
+        val reader = BufferedReader(InputStreamReader(process.inputStream))
+        val output = reader.readLine()
+        output.split(" ").lastOrNull() ?: "unknown"
+    } catch (e: Exception) {
+        "unknown"
+    }
+}
+    
     private fun isKernelSupported(): Boolean {
+
+// بعدين في الشيك:
+val kernelName = getKernelName()
+val buildHost = getBuildHost()
+
+if (kernelName.contains("JoKernel", ignoreCase = true)) {
+    val supportedHosts = listOf("JO@Jo_0012", "jo@jo") // أضف hosts بتاعتك من uname -a
+    return supportedHosts.any { it.equals(buildHost, ignoreCase = true) }
+}
         val supportedSignatures = listOf(
             "Lunar",
             "N0Kontzzz",
@@ -602,10 +637,6 @@ class MainActivity : ComponentActivity() {
         val oxygenSupportedHosts = listOf(
             "danda@pavilion"
         )
-
-        val jokernelSupportedHosts = listOf(
-            "JO@Jo_0012"
-        )
         
         try {
             var versionLine: String?
@@ -625,11 +656,6 @@ class MainActivity : ComponentActivity() {
                 if (versionLine.contains("4.19.404R", ignoreCase = true) && 
                     versionLine.contains("vyn@zorin", ignoreCase = true)) {
                     return true
-                }
-
-            if (kernelName.lowercase() == "jokernel") {
-                    val buildHost = utsname.machine
-                    return jokernelSupportedHosts.any { it.equals(buildHost, ignoreCase = true) }
                 }
 
                 for (signature in supportedSignatures) {
