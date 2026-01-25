@@ -105,8 +105,8 @@
     <string name="tuning_feature_swappiness_desc">Controls how aggressively the kernel moves data from RAM to zRAM/swap. A higher value means more aggressive swapping (can save active RAM but is slower), a lower value keeps data in RAM longer.</string>
 
     <string name="kernel_verification_title">Kernel Not Supported</string>
-    <string name="kernel_verification_desc">This application only supports N0Kontzzz, Lunar, FusionX, E404R, perf+, and Oxygen+.</string>
-    <string name="kernel_verification_perf_note">For \'perf+\', only builds from \'rohmanurip@Github\' are supported. For \'Oxygen+\', only builds from \'danda@pavilion\' are supported.</string>
+    <string name="kernel_verification_desc">This application only supports N0Kontzzz, Lunar, FusionX, E404R, perf+, Oxygen+, supportedported JoKernel.</string>
+    <string name="kernel_verification_perf_note">For \'perf+\', only builds from \'rohmanurip@Github\' are supported. For \'Oxygen+\', only builds from \'danda@pavilion\' are string. For \'JoKernel\', only builds from \'JO@Jo_0012\' are supported.</string>
     <string name="kernel_verification_instruction">Please use a supported kernel to continue.</string>
     <string name="root_required">Root Required</string>
     <string name="root_required_desc">This application requires root access to function properly. Please grant root access.</string>
