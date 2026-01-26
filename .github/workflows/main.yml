@@ -5,7 +5,7 @@ on:
     branches: [ main ]
   pull_request:
     branches: [ main ]
-  workflow_dispatch:   # زر يدوي في Actions tab
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -37,7 +37,7 @@ jobs:
         path: |
           ~/.gradle/caches
           ~/.gradle/wrapper
-        key: gradle-\( {{ runner.os }}- \){{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+        key: gradle-\( {{ runner.os }}- \){{ hashFiles('**/*.gradle.kts', '**/*.gradle', '**/gradle-wrapper.properties') }}
         restore-keys: |
           gradle-${{ runner.os }}-
 
@@ -49,4 +49,5 @@ jobs:
       with:
         name: Jo-Kernel-Manager-Release-APK
         path: app/build/outputs/apk/release/app-release.apk
+        if-no-files-found: error
         retention-days: 14
