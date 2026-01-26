@@ -92,9 +92,6 @@ dependencies {
     implementation(libs.libsu)
     implementation(libs.coil.compose)
     implementation(libs.accompanist.drawablepainter)
-    implementation(libs.guava) {
-        exclude(group = "com.google.guava", module = "listenablefuture")
-    }
 
     // Testing
     testImplementation(libs.junit)
