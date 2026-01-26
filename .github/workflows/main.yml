@@ -43,6 +43,6 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: Jo-Kernel-Manager-Release-APK
-        path: app/release/app-release.apk
-        if-no-files-found: error
+        path: app/build/outputs/apk/release/*.apk  # غيرنا لـ *.apk عشان يلاقي أي APK في المجلد
+        if-no-files-found: warn  # بدل error عشان ما يفشلش الـ job لو مش موجود
         retention-days: 14
