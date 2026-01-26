@@ -35,9 +35,9 @@ configure <com.android.build.api.dsl.ApplicationExtension> {
 
 configurations.all {
     resolutionStrategy {
-        force(libs.guava)
+        force("com.google.guava:guava:33.5.0-android")
+        exclude(group = "com.google.guava", module = "listenablefuture")
     }
-    exclude(group = "com.google.guava", module = "listenablefuture")
 }
 
 kotlin {
@@ -101,11 +101,4 @@ dependencies {
     testImplementation(libs.androidx.test.core)
     testImplementation(libs.mockito.core)
     testImplementation(libs.robolectric)
-
-    configurations.all {
-    resolutionStrategy {
-        force("com.google.guava:guava:33.5.0-android")
-        exclude(group = "com.google.guava", module = "listenablefuture")
-    }
-}
 }
