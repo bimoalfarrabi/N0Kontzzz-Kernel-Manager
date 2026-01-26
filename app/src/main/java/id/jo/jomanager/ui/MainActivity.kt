@@ -185,7 +185,7 @@ class MainActivity : ComponentActivity() {
                     "permission_manager" -> stringResource(id = R.string.permission_manager_title)
                     "dexopt" -> "Dexopt"
                     "kernel_log" -> stringResource(id = R.string.kernel_log_title)
-                    else -> stringResource(id = R.string.n0kz_kernel_manager) // Default title for home, tuning, misc
+                    else -> stringResource(id = R.string.jo_kernel_manager) // Default title for home, tuning, misc
                 }
 
                 val showSettingsIcon = when (currentRoute) {
