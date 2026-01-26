@@ -102,12 +102,10 @@ dependencies {
     testImplementation(libs.mockito.core)
     testImplementation(libs.robolectric)
 
-    implementation("com.google.guava:guava:33.5.0-android") {
+    configurations.all {
+    resolutionStrategy {
+        force("com.google.guava:guava:33.5.0-android")
         exclude(group = "com.google.guava", module = "listenablefuture")
     }
-
-    // لو عايز تستبدل listenablefuture بحاجة فارغة
-    implementation("com.google.guava:listenablefuture:9999.0-empty-to-avoid-conflict-with-guava") {
-        because("Avoid duplicate ListenableFuture from Guava")
-    }
+}
 }
