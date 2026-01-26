@@ -23,23 +23,13 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: gradle
+        cache: gradle   # ده هيخلي Gradle يتعامل مع الـ cache لوحده بدون key معقد
 
     - name: Validate Gradle wrapper
       uses: gradle/wrapper-validation-action@v3
 
     - name: Make gradlew executable
       run: chmod +x gradlew
-
-    - name: Cache Gradle dependencies
-      uses: actions/cache@v4
-      with:
-        path: |
-          ~/.gradle/caches
-          ~/.gradle/wrapper
-        key: gradle-\( {{ runner.os }}- \){{ hashFiles('**/*.gradle.kts', '**/*.gradle', '**/gradle-wrapper.properties') }}
-        restore-keys: |
-          gradle-${{ runner.os }}-
 
     - name: Build Release APK
       run: ./gradlew assembleRelease --stacktrace --info
