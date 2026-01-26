@@ -105,7 +105,7 @@ dependencies {
 
 configurations.all {
     resolutionStrategy {
-        force "com.google.guava:guava:33.5.0-android"
-        exclude group: "com.google.guava", module: "listenablefuture"
+        force("com.google.guava:guava:33.5.0-android")
+        exclude(group = "com.google.guava", module = "listenablefuture")
     }
 }
