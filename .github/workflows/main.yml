@@ -40,7 +40,7 @@ jobs:
       run: ./gradlew assembleRelease --stacktrace --info
 
     - name: Upload Release APK
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v6
       with:
         name: Jo-Kernel-Manager-Release-APK
         path: app/build/outputs/apk/release/*.apk  # غيرنا لـ *.apk عشان يلاقي أي APK في المجلد
