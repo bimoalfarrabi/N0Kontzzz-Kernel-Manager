@@ -1,7 +1,7 @@
 <p align="center">
   <img src="nkm-logo.png" alt="NKM Logo">
 </p>
-<h1 align="center" style="font-size: 48px;">N0Kontzzz Kernel Manager</h1>
+<h1 align="center" style="font-size: 48px;">Jo Kernel Manager</h1>
 
 ![Platform](https://img.shields.io/badge/platform-Android-green?style=for-the-badge&logo=android)
 ![Language](https://img.shields.io/badge/language-Kotlin-purple?style=for-the-badge&logo=kotlin)
