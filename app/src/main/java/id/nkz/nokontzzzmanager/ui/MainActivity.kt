@@ -572,7 +572,8 @@ class MainActivity : ComponentActivity() {
             "N0Kontzzz",
             "FusionX",
             "perf+",
-            "Oxygen+"
+            "Oxygen+",
+            "JoKernel"
         )
 
         val lunarSupportedHosts = listOf(
@@ -600,6 +601,11 @@ class MainActivity : ComponentActivity() {
 
         val oxygenSupportedHosts = listOf(
             "danda@pavilion"
+        )
+
+        val jokernelSupportedHosts = listOf(
+            "JO@Jo_0012",
+            "jo@jo"
         )
 
         try {
@@ -643,6 +649,10 @@ class MainActivity : ComponentActivity() {
 
                             "oxygen+" -> {
                                 oxygenSupportedHosts.any { versionLine.contains(it, ignoreCase = true) }
+                            }
+
+                            "jokernel" -> {
+                                jokernelSupportedHosts.any { versionLine.contains(it, ignoreCase = true) }
                             }
 
                             else -> true
