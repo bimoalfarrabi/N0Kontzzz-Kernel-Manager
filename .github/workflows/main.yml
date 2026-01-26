@@ -23,7 +23,7 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: gradle   # ده هيخلي Gradle يتعامل مع الـ cache لوحده بدون key معقد
+        cache: gradle
 
     - name: Validate Gradle wrapper
       uses: gradle/wrapper-validation-action@v3
@@ -31,8 +31,13 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x gradlew
 
+    - name: Increase memory for Gradle and Kotlin compiler
+      run: |
+        echo "org.gradle.jvmargs=-Xmx6144m -XX:MaxMetaspaceSize=1024m -XX:+HeapDumpOnOutOfMemoryError" >> gradle.properties
+        echo "kotlin.daemon.jvmargs=-Xmx6144m -XX:MaxMetaspaceSize=1024m -XX:+HeapDumpOnOutOfMemoryError" >> gradle.properties
+
     - name: Build Release APK
-      run: ./gradlew assembleRelease --no-daemon --stacktrace --info
+      run: ./gradlew assembleRelease --stacktrace --info
 
     - name: Upload Release APK
       uses: actions/upload-artifact@v4
