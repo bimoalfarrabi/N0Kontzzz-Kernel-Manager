@@ -7,11 +7,11 @@ plugins {
 }
 
 configure <com.android.build.api.dsl.ApplicationExtension> {
-    namespace = "id.nkz.nokontzzzmanager"
+    namespace = "id.jo.jomanager"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "id.nkz.nokontzzzmanager"
+        applicationId = "id.jo.jomanager"
         minSdk = 26
         targetSdk = 36
         versionCode = 74

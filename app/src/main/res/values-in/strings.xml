@@ -12,13 +12,13 @@
     <string name="abi" translatable="false">ABI</string>
     <string name="kernel_version">Versi Kernel</string>
     <string name="wireguard_version">Versi WireGuard</string>
-    <string name="n0kz_kernel_manager">N0Kontzzz Kernel Manager</string>
+    <string name="jo_kernel_manager">Jo Kernel Manager</string>
     <string name="home">Beranda</string>
     <string name="tuning">Tuning</string>
     <string name="misc">Lainnya</string>
     <string name="info">Info</string>
     <string name="github_link">https://github.com/bimoalfarrabi/kernel_xiaomi_sm8250_n0kontzz</string>
-    <string name="telegram_link">https://t.me/n0kontzzz</string>
+    <string name="telegram_link">https://t.me/Jo_0012</string>
     <string name="reboot_system">Mulai Ulang Sistem</string>
     <string name="reboot_bootloader">Mulai Ulang ke Bootloader</string>
     <string name="reboot_recovery">Mulai Ulang ke Recovery</string>
