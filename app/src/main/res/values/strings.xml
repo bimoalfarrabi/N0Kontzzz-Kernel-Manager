@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">NKM</string>
-    <string name="desc_about">Thank you for choosing N0Kontzzz Kernel Manager. We hope you enjoy the experience!</string>
+    <string name="desc_about">Thank you for choosing Jo Kernel Manager. We hope you enjoy the experience!</string>
     <string name="about">About App</string>
     <string name="telegram">Telegram</string>
     <string name="github">Github</string>
@@ -12,7 +12,7 @@
     <string name="abi" translatable="false">ABI</string>
     <string name="kernel_version">Kernel Version</string>
     <string name="wireguard_version">WireGuard Version</string>
-    <string name="n0kz_kernel_manager">N0Kontzzz Kernel Manager</string>
+    <string name="n0kz_kernel_manager">Jo Kernel Manager</string>
     <string name="home">Home</string>
     <string name="tuning">Tuning</string>
     <string name="misc">Misc</string>
