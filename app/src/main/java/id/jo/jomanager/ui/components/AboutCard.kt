@@ -52,7 +52,7 @@ data class Developer(val name: Int, val role: Int, val telegramUsername: String?
 data class RepositoryContributor(val name: Int, val url: String, val description: Int, val drawableResId: Int)
 
 // Special recognition for the main developer who led this rebrand
-val leadDeveloper = Developer(R.string.Jo, R.string.jo_kernel__developer, "Jo_0012", R.drawable.jo)
+val leadDeveloper = Developer(R.string.Jo, R.string.jo_kernel__developer, "JO_KERNEL_SG", R.drawable.jo)
 
 val repositoryContributors = listOf(
     RepositoryContributor(R.string.nkm_kernel_manager_repo, "https://github.com/bimoalfarrabi/N0Kontzzz-Kernel-Manager", R.string.original_project_repo, R.drawable.viasco)
