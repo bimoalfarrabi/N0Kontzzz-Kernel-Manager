@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    # 1️⃣ Checkout repository
+    # 1️⃣ Checkout repo
     - name: Checkout repository
       uses: actions/checkout@v6
 
@@ -27,48 +27,72 @@ jobs:
         distribution: 'temurin'
         cache: gradle
 
-    # 3️⃣ Validate Gradle wrapper
+    # 3️⃣ Cache Gradle dependencies
+    - name: Cache Gradle packages
+      uses: actions/cache@v3
+      with:
+        path: |
+          ~/.gradle/caches
+          ~/.gradle/wrapper/
+        key: gradle-${{ runner.os }}-${{ hashFiles('**/build.gradle*', '**/gradle-wrapper.properties') }}
+        restore-keys: |
+          gradle-${{ runner.os }}-
+
+    # 4️⃣ Cache build outputs
+    - name: Cache build outputs
+      uses: actions/cache@v3
+      with:
+        path: app/build
+        key: build-${{ runner.os }}-app
+
+    # 5️⃣ Validate Gradle wrapper
     - name: Validate Gradle wrapper
       uses: gradle/wrapper-validation-action@v3
 
-    # 4️⃣ Make gradlew executable
+    # 6️⃣ Make gradlew executable
     - name: Make gradlew executable
       run: chmod +x gradlew
 
+    # 7️⃣ Set up Android SDK + Build Tools
     - name: Set up Android SDK
       uses: android-actions/setup-android@v2
       with:
-        api-level: 33
-        build-tools: 33.0.2
+        api-level: 36
+        build-tools: 36.0.0
 
-    # 5️⃣ Decode keystore from Secret
+    # 8️⃣ Decode keystore from Secret
     - name: Decode keystore
       run: |
         echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > my-key.jks
 
-    # 6️⃣ Build Release APK
+    # 9️⃣ Build Release APK
     - name: Build Release APK
       run: ./gradlew assembleRelease --stacktrace --info
 
-    # 7️⃣ Sign APK
+    # 🔟 Sign APK (v1 + v2 + v3)
     - name: Sign APK
       run: |
-        apksigner sign \
+        $ANDROID_HOME/build-tools/36.0.0/apksigner sign \
           --ks my-key.jks \
           --ks-pass pass:${{ secrets.KEYSTORE_PASSWORD }} \
           --key-pass pass:${{ secrets.KEY_PASSWORD }} \
           --ks-key-alias ${{ secrets.KEY_ALIAS }} \
+          --v1-signing-enabled true \
+          --v2-signing-enabled true \
+          --v3-signing-enabled true \
           app/build/outputs/apk/release/app-release-unsigned.apk
 
-    # 8️⃣ Verify APK signature
+    # 1️⃣1️⃣ Verify APK signature
     - name: Verify APK signature
-      run: apksigner verify app/build/outputs/apk/release/app-release-unsigned.apk
+      run: |
+        $ANDROID_HOME/build-tools/36.0.0/apksigner verify \
+          app/build/outputs/apk/release/app-release-unsigned.apk
 
-    # 9️⃣ Rename APK النهائي
+    # 1️⃣2️⃣ Rename APK النهائي
     - name: Rename APK
       run: mv app/build/outputs/apk/release/app-release-unsigned.apk app/build/outputs/apk/release/Jo-Kernel-Manager-Release.apk
 
-    # 🔟 Upload signed APK
+    # 1️⃣3️⃣ Upload signed APK
     - name: Upload Release APK
       uses: actions/upload-artifact@v6
       with:
