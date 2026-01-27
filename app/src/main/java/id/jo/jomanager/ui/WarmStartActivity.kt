@@ -9,7 +9,7 @@ class WarmStartActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         try {
-            val sp = getSharedPreferences("nkm_preferences", MODE_PRIVATE)
+            val sp = getSharedPreferences("jo_preferences", MODE_PRIVATE)
             if (sp.getBoolean("battery_monitor_enabled", false)) {
                 BatteryMonitorService.start(this)
             }
@@ -23,5 +23,6 @@ class WarmStartActivity : Activity() {
         }
     }
 }
+
 
 
