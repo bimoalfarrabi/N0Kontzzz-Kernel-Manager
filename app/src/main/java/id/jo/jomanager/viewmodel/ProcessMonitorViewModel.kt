@@ -77,7 +77,7 @@ class ProcessMonitorViewModel @Inject constructor(
             while (isActive) {
                 try {
                     // 1. Capture Snapshot
-                    val tempPath = "/data/local/tmp/nkm_proc_snapshot"
+                    val tempPath = "/data/local/tmp/jo_proc_snapshot"
                     val cmd = "(cat /proc/stat; echo '###'; cat /proc/[0-9]*/stat) > $tempPath && chmod 644 $tempPath"
                     rootRepository.run(cmd)
 
@@ -168,7 +168,7 @@ class ProcessMonitorViewModel @Inject constructor(
         monitorJob = null
         viewModelScope.launch(Dispatchers.IO) {
             try {
-                rootRepository.run("rm /data/local/tmp/nkm_proc_snapshot")
+                rootRepository.run("rm /data/local/tmp/jo_proc_snapshot")
             } catch (_: Exception) {}
         }
     }
