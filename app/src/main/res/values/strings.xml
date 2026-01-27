@@ -330,7 +330,7 @@
 
     <!-- AboutCard -->
     <string name="jo">JO</string>
-    <string name="jo_kernel__developer">JO-M developer</string>
+    <string name="jo_kernel_developer">JO-M developer</string>
     <string name="nkm_kernel_manager_repo">NKM Kernel Manager Repository</string>
     <string name="original_project_repo">Original project repository</string>
     <string name="developer_profile_picture">%1$s profile picture</string>
