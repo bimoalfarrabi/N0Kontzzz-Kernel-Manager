@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="nkm-logo.png" alt="NKM Logo">
+  <img src="jo-logo.png" alt="JO-M Logo">
 </p>
 <h1 align="center" style="font-size: 48px;">Jo Kernel Manager</h1>
 
