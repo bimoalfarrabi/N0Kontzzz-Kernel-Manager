@@ -48,7 +48,7 @@ import androidx.compose.ui.unit.dp
 
 import id.jo.jomanager.R
 
-data class Developer(val name: Int, val role: Int, val githubUsername: String, val drawableResId: Int)
+data class Developer(val name: Int, val role: Int, val telegramUsername: String?, val drawableResId: Int)
 data class RepositoryContributor(val name: Int, val url: String, val description: Int, val drawableResId: Int)
 
 // Special recognition for the main developer who led this rebrand
@@ -351,21 +351,23 @@ fun AboutCard(
 @Composable
 fun DeveloperCreditItem(developer: Developer, position: Int, totalItems: Int) {
     val uriHandler = LocalUriHandler.current
-    val githubProfileUrl = "https://github.com/${developer.githubUsername}"
-    val developerName = stringResource(id = developer.name)
     
-    // Determine rounded corners based on position
+    // لينك تليجرام فقط (لو موجود)
+    val telegramUrl = developer.telegramUsername?.let { "https://t.me/$it" }
+    
     val shape = when (position) {
-        0 if position == totalItems - 1 -> RoundedCornerShape(24.dp) // Only item
-        0 -> RoundedCornerShape(24.dp, 24.dp, 4.dp, 4.dp) // First item: top corners 24dp, bottom 8dp
-        totalItems - 1 -> RoundedCornerShape(4.dp, 4.dp, 24.dp, 24.dp) // Last item: top corners 8dp, bottom 24dp
-        else -> RoundedCornerShape(4.dp) // Middle items: all corners 8dp
+        0 if position == totalItems - 1 -> RoundedCornerShape(24.dp)
+        0 -> RoundedCornerShape(24.dp, 24.dp, 4.dp, 4.dp)
+        totalItems - 1 -> RoundedCornerShape(4.dp, 4.dp, 24.dp, 24.dp)
+        else -> RoundedCornerShape(4.dp)
     }
 
     Surface(
         modifier = Modifier
             .fillMaxWidth()
-            .clickable { uriHandler.openUri(githubProfileUrl) },
+            .clickable {
+                telegramUrl?.let { uriHandler.openUri(it) } // يفتح تليجرام لو موجود
+            },
         shape = shape,
         color = MaterialTheme.colorScheme.surfaceContainerLow,
     ) {
@@ -378,7 +380,7 @@ fun DeveloperCreditItem(developer: Developer, position: Int, totalItems: Int) {
         ) {
             Image(
                 painter = painterResource(id = developer.drawableResId),
-                contentDescription = stringResource(id = R.string.developer_profile_picture, developerName),
+                contentDescription = null,
                 modifier = Modifier
                     .size(48.dp)
                     .clip(CircleShape)
@@ -386,7 +388,7 @@ fun DeveloperCreditItem(developer: Developer, position: Int, totalItems: Int) {
 
             Column(modifier = Modifier.weight(1f)) {
                 Text(
-                    text = developerName,
+                    text = stringResource(id = developer.name),
                     style = MaterialTheme.typography.titleMedium,
                     fontWeight = FontWeight.Bold
                 )
@@ -395,12 +397,20 @@ fun DeveloperCreditItem(developer: Developer, position: Int, totalItems: Int) {
                     style = MaterialTheme.typography.bodyMedium,
                     color = MaterialTheme.colorScheme.onSurfaceVariant
                 )
-                Text(
-                    text = stringResource(id = R.string.at_github, developer.githubUsername),
-                    style = MaterialTheme.typography.bodySmall,
-                    color = MaterialTheme.colorScheme.primary,
-                    fontWeight = FontWeight.Medium
-                )
+                if (developer.telegramUsername != null) {
+                    Text(
+                        text = "t.me/${developer.telegramUsername}",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.primary,
+                        fontWeight = FontWeight.Medium
+                    )
+                } else {
+                    Text(
+                        text = "No Telegram",
+                        style = MaterialTheme.typography.bodySmall,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
             }
         }
     }
