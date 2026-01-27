@@ -52,17 +52,10 @@ data class Developer(val name: Int, val role: Int, val githubUsername: String, v
 data class RepositoryContributor(val name: Int, val url: String, val description: Int, val drawableResId: Int)
 
 // Special recognition for the main developer who led this rebrand
-val leadDeveloper = Developer(R.string.viasco, R.string.nkm_developer, "bimoalfarrabi", R.drawable.viasco)
-
-val individualContributors = listOf(
-    Developer(R.string.gustyx_power, R.string.xkm_developer, "Gustyx-Power", R.drawable.gustyx_power),
-    Developer(R.string.radika, R.string.rvkm_developer, "Rve27", R.drawable.radika),
-    Developer(R.string.danda, R.string.help_and_support, "Danda420", R.drawable.danda)
-)
+val leadDeveloper = Developer(R.string.Jo, R.string.jo_kernel__developer, "Jo_0012", R.drawable.jo)
 
 val repositoryContributors = listOf(
-    RepositoryContributor(R.string.xtra_kernel_manager_repo, "https://github.com/Gustyx-Power/Xtra-Kernel-Manager", R.string.original_project_repo, R.drawable.xkm),
-    RepositoryContributor(R.string.rvkernel_manager_repo, "https://github.com/Rve27/RvKernel-Manager", R.string.feature_and_code_reference, R.drawable.rv)
+    RepositoryContributor(R.string.nkm_kernel_manager_repo, "https://github.com/bimoalfarrabi/N0Kontzzz-Kernel-Manager", R.string.original_project_repo, R.drawable.viasco)
 )
 
 @Composable
@@ -252,22 +245,6 @@ fun AboutCard(
                             
                             // Separator
                             Spacer(modifier = Modifier.height(16.dp)) // Reduce spacing before section title
-                            
-                            // Individual Contributors Section
-                            Text(
-                                text = stringResource(id = R.string.individual_contributors),
-                                style = MaterialTheme.typography.titleMedium,
-                                fontWeight = FontWeight.Bold
-                            )
-                            
-                            Spacer(modifier = Modifier.height(16.dp)) // Add spacing between title and first card
-                            
-                            individualContributors.forEachIndexed { index, developer ->
-                                if (index > 0) {
-                                    Spacer(modifier = Modifier.height(2.dp))
-                                }
-                                DeveloperCreditItem(developer = developer, position = index, totalItems = individualContributors.size)
-                            }
                             
                             // Repository Contributors Section
                             Spacer(modifier = Modifier.height(16.dp)) // Reduce spacing before section title
