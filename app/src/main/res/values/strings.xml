@@ -329,18 +329,10 @@
     <string name="gki2">GKI 2</string>
 
     <!-- AboutCard -->
-    <string name="viasco">Viasco</string>
-    <string name="nkm_developer">NKM developer</string>
-    <string name="gustyx_power">Gustyx-Power</string>
-    <string name="xkm_developer">XKM developer</string>
-    <string name="radika">Radika</string>
-    <string name="rvkm_developer">RvKM developer</string>
-    <string name="danda">Danda</string>
-    <string name="help_and_support">Help and support</string>
-    <string name="xtra_kernel_manager_repo">Xtra Kernel Manager Repository</string>
+    <string name="jo">JO</string>
+    <string name="jo_kernel__developer">JO-M developer</string>
+    <string name="nkm_kernel_manager_repo">NKM Kernel Manager Repository</string>
     <string name="original_project_repo">Original project repository</string>
-    <string name="rvkernel_manager_repo">RvKernel Manager Repository</string>
-    <string name="feature_and_code_reference">Feature and code reference from this repository</string>
     <string name="developer_profile_picture">%1$s profile picture</string>
 
     <!-- AboutCard Batch 2 -->
@@ -505,16 +497,12 @@
     <!-- Battery Optimization Dialog -->
     <string name="permissions_required">Permissions Required</string>
     <string name="battery_optimization">Battery Optimization</string>
-    <string name="battery_opt_desc_exit">NKM requires battery optimization exclusion to function properly. Without this permission, the app cannot maintain your thermal settings in the background. Please grant the permission or exit the app.</string>
-    <string name="battery_opt_desc_later">NKM needs to be excluded from battery optimization to maintain your thermal settings in the background. Please allow this permission for the app to work properly.</string>
+    <string name="battery_opt_desc_exit">JO-M requires battery optimization exclusion to function properly. Without this permission, the app cannot maintain your thermal settings in the background. Please grant the permission or exit the app.</string>
+    <string name="battery_opt_desc_later">JO-M needs to be excluded from battery optimization to maintain your thermal settings in the background. Please allow this permission for the app to work properly.</string>
     <string name="open_settings">Open Settings</string>
     <string name="exit_app_dialog">Exit App</string>
     <string name="later">Later</string>
-
-    <!-- Source Code Chip -->
-    <string name="source_code">Source Code</string>
-    <string name="source_code_link" translatable="false">https://github.com/bimoalfarrabi/N0Kontzzz-Kernel-Manager.git</string>
-
+    
     <!-- Compression Algorithm Descriptions -->
     <string name="compression_lz4_desc">Maximum speed • Low latency</string>
     <string name="compression_zstd_desc">High efficiency • Best compression ratio</string>
@@ -596,7 +584,7 @@
     <string name="permission_storage_required">Storage permission required for backup/restore</string>
     <string name="backup_restore_select_file_msg">Select a backup file to continue</string>
     <string name="backup_restore_select_file_btn">Select File</string>
-    <string name="backup_file_name" translatable="false">nkm_backup.json</string>
+    <string name="backup_file_name" translatable="false">jo_backup.json</string>
 
     <!-- Dexopt Screen -->
     <string name="dexopt_title">Dexopt</string>
