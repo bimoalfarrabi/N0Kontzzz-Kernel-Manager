@@ -35,6 +35,12 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x gradlew
 
+    - name: Set up Android SDK
+      uses: android-actions/setup-android@v2
+      with:
+        api-level: 33
+        build-tools: 33.0.2
+
     # 5️⃣ Decode keystore from Secret
     - name: Decode keystore
       run: |
