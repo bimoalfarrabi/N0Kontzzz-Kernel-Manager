@@ -31,11 +31,6 @@ jobs:
     - name: Make gradlew executable
       run: chmod +x gradlew
 
-    - name: Increase memory for Gradle and Kotlin compiler
-      run: |
-        echo "org.gradle.jvmargs=-Xmx6144m -XX:MaxMetaspaceSize=1024m -XX:+HeapDumpOnOutOfMemoryError" >> gradle.properties
-        echo "kotlin.daemon.jvmargs=-Xmx6144m -XX:MaxMetaspaceSize=1024m -XX:+HeapDumpOnOutOfMemoryError" >> gradle.properties
-
     - name: Build Release APK
       run: ./gradlew assembleRelease --stacktrace --info
 
