@@ -52,7 +52,7 @@ data class Developer(val name: Int, val role: Int, val telegramUsername: String?
 data class RepositoryContributor(val name: Int, val url: String, val description: Int, val drawableResId: Int)
 
 // Special recognition for the main developer who led this rebrand
-val leadDeveloper = Developer(R.string.Jo, R.string.jo_kernel__developer, "JO_KERNEL_SG", R.drawable.jo)
+val leadDeveloper = Developer(R.string.jo, R.string.jo_kernel_developer, "JO_KERNEL_SG", R.drawable.jo)
 
 val repositoryContributors = listOf(
     RepositoryContributor(R.string.nkm_kernel_manager_repo, "https://github.com/bimoalfarrabi/N0Kontzzz-Kernel-Manager", R.string.original_project_repo, R.drawable.viasco)
@@ -147,25 +147,6 @@ fun AboutCard(
                 // Add spacing between social links and credits badge
                 Spacer(modifier = Modifier.height(8.dp))
 
-                // Source Code Button
-                val sourceCodeLink = stringResource(R.string.source_code_link)
-                OutlinedButton(
-                    onClick = { uriHandler.openUri(sourceCodeLink) },
-                    modifier = Modifier.height(32.dp),
-                    contentPadding = PaddingValues(horizontal = 12.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.Code,
-                        contentDescription = null,
-                        modifier = Modifier.size(16.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = stringResource(id = R.string.source_code),
-                        fontWeight = FontWeight.Bold,
-                        style = MaterialTheme.typography.labelMedium
-                    )
-                }
                 // Add spacing between Source Code and Credits badge
                 Spacer(modifier = Modifier.height(8.dp))
 
