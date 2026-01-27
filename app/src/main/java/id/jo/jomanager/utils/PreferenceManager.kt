@@ -81,7 +81,7 @@ class PreferenceManager @Inject constructor(
 
     private fun credentialPrefs(): SharedPreferences? {
         return try {
-            context.getSharedPreferences("nkm_preferences", Context.MODE_PRIVATE)
+            context.getSharedPreferences("jo_preferences", Context.MODE_PRIVATE)
         } catch (_: IllegalStateException) {
             null
         }
@@ -89,7 +89,7 @@ class PreferenceManager @Inject constructor(
 
     private fun deviceProtectedPrefs(): SharedPreferences {
         val deviceContext = context.createDeviceProtectedStorageContext()
-        return deviceContext.getSharedPreferences("nkm_preferences", Context.MODE_PRIVATE)
+        return deviceContext.getSharedPreferences("jo_preferences", Context.MODE_PRIVATE)
     }
 
     fun setTargetGamePackages(packages: Set<String>) {
