@@ -14,8 +14,8 @@ configure <com.android.build.api.dsl.ApplicationExtension> {
         applicationId = "id.jo.jomanager"
         minSdk = 26
         targetSdk = 36
-        versionCode = 74
-        versionName = "1.5.6"
+        versionCode = 1
+        versionName = "1.0.0"
     }
     buildTypes {
         release {
