@@ -1,0 +1,47 @@
+name: Build Signed APK
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repo
+      uses: actions/checkout@v4
+
+    - name: Set up JDK
+      uses: actions/setup-java@v4
+      with:
+        distribution: 'temurin'
+        java-version: '17'
+
+    - name: Decode keystore
+      run: |
+        echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > my-key.jks
+
+    - name: Grant gradlew permission
+      run: chmod +x gradlew
+
+    - name: Build Release APK
+      run: ./gradlew assembleRelease
+
+    - name: Sign APK
+      run: |
+        apksigner sign \
+          --ks my-key.jks \
+          --ks-pass pass:${{ secrets.KEYSTORE_PASSWORD }} \
+          --key-pass pass:${{ secrets.KEY_PASSWORD }} \
+          --ks-key-alias ${{ secrets.KEY_ALIAS }} \
+          app/build/outputs/apk/release/app-release-unsigned.apk
+
+    - name: Verify APK signature
+      run: apksigner verify app/build/outputs/apk/release/app-release-unsigned.apk
+
+    - name: Upload APK
+      uses: actions/upload-artifact@v4
+      with:
+        name: signed-apk
+        path: app/build/outputs/apk/release/app-release-unsigned.apk
