@@ -93,7 +93,7 @@ fun AboutCard(
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        painter = painterResource(id = R.drawable.nkm_png),
+                        painter = painterResource(id = R.drawable.jo_png),
                         contentDescription = null,
                         tint = MaterialTheme.colorScheme.onSecondaryContainer,
                         modifier = Modifier
