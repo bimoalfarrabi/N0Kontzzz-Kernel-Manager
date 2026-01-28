@@ -1224,6 +1224,8 @@ class SystemRepository @Inject constructor(
     private fun getAvailableKgslPath(): String? {
         val paths = listOf(
             "/sys/kernel/e404/kgsl_skip_zeroing",
+            "/sys/kernel/jo_attributes/kgsl_skip_zeroing",
+            "/sys/kernel/jo_attributes/jo_kgsl_skip_zeroing",            
             "/sys/kernel/lunar_attributes/kgsl_skip_zeroing",
             "/sys/kernel/lunar_attributes/lunar_kgsl_skip_zeroing",
             "/sys/kernel/n0kz_attributes/kgsl_skip_zeroing",
@@ -1289,6 +1291,8 @@ class SystemRepository @Inject constructor(
         try {
             val paths = listOf(
                 "/sys/kernel/e404/kgsl_skip_zeroing",
+                "/sys/kernel/jo_attributes/kgsl_skip_zeroing",
+                "/sys/kernel/jo_attributes/jo_kgsl_skip_zeroing",                
                 "/sys/kernel/lunar_attributes/kgsl_skip_zeroing",
                 "/sys/kernel/n0kz_attributes/kgsl_skip_zeroing",
                 "/sys/kernel/n0kz_attributes/n0kz_kgsl_skip_zeroing",
@@ -1315,6 +1319,7 @@ class SystemRepository @Inject constructor(
 
     private fun getAvailableAvoidDirtyPtePath(): String? {
         val paths = listOf(
+            "/sys/kernel/jo_attributes/avoid_dirty_pte",            
             "/sys/kernel/n0kz_attributes/avoid_dirty_pte",
             "/sys/kernel/e404/avoid_dirty_pte"
         )
@@ -1689,4 +1694,5 @@ class SystemRepository @Inject constructor(
         repositoryScope.cancel()
     }
 }
+
 
