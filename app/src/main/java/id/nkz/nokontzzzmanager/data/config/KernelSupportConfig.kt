@@ -23,6 +23,7 @@ data class KernelSupportConfig(
             "senx@ubuntu",
             "sensei@ServerHive",
             "Senseix@Ubuntu"
+            "sai@ServerHive"
         ),
         "n0kontzzz" to listOf(
             "bimoalfarrabi@github.com",
