@@ -47,9 +47,11 @@ class MainViewModel @Inject constructor(
                 // Special check for E404R kernel (keep it here because special case)
                 val e404rMatch = (versionLine.contains("4.19.404R", ignoreCase = true) || 
                                   versionLine.contains("5.10.404R", ignoreCase = true))
-                val hostMatch = versionLine.contains("vyn", ignoreCase = true) && 
+                val hostMatch = (versionLine.contains("vyn", ignoreCase = true) && 
                                 (versionLine.contains("fedora", ignoreCase = true) || 
-                                 versionLine.contains("zorin", ignoreCase = true))
+                                versionLine.contains("zorin", ignoreCase = true))) ||
+                                (versionLine.contains("sai", ignoreCase = true) && 
+                                versionLine.contains("ServerHive", ignoreCase = true))
                 val buildHostMatch = versionLine.contains("build-user@build-host", ignoreCase = true)
 
                 if (e404rMatch && (hostMatch || buildHostMatch)) {
