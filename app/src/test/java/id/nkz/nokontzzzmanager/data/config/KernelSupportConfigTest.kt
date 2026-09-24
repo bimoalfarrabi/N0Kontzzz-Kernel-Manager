@@ -10,8 +10,8 @@ class KernelSupportConfigTest {
     // --- supportedSignatures ---
 
     @Test
-    fun `default config contains 7 signatures`() {
-        assertEquals(7, config.supportedSignatures.size)
+    fun `default config contains 8 signatures`() {
+        assertEquals(8, config.supportedSignatures.size)
     }
 
     @Test
@@ -31,15 +31,15 @@ class KernelSupportConfigTest {
 
     @Test
     fun `all expected signatures are present`() {
-        val expected = listOf("Lunar", "N0Kontzzz", "N0kernel", "FusionX", "perf+", "Oxygen+", "dead-butterflies")
+        val expected = listOf("Lunar", "N0Kontzzz", "N0kernel", "FusionX", "perf+", "Oxygen+", "dead-butterflies", "pitchkernel")
         assertTrue(config.supportedSignatures.containsAll(expected))
     }
 
     // --- kernelHosts ---
 
     @Test
-    fun `default config contains 7 kernel host entries`() {
-        assertEquals(7, config.kernelHosts.size)
+    fun `default config contains 8 kernel host entries`() {
+        assertEquals(8, config.kernelHosts.size)
     }
 
     @Test
@@ -64,8 +64,20 @@ class KernelSupportConfigTest {
     }
 
     @Test
+    fun `pitchkernel is a supported signature`() {
+        assertTrue(config.supportedSignatures.contains("pitchkernel"))
+    }
+
+    @Test
+    fun `pitchkernel host contains github-actions builder`() {
+        val hosts = config.kernelHosts["pitchkernel"]
+        assertNotNull(hosts)
+        assertTrue(hosts!!.any { it.contains("pitchkernel@github-actions") })
+    }
+
+    @Test
     fun `all host keys match expected kernel identifiers`() {
-        val expectedKeys = setOf("lunar", "fusionx", "n0kontzzz", "n0kernel", "perf+", "oxygen+", "dead-butterflies")
+        val expectedKeys = setOf("lunar", "fusionx", "n0kontzzz", "n0kernel", "perf+", "oxygen+", "dead-butterflies", "pitchkernel")
         assertEquals(expectedKeys, config.kernelHosts.keys)
     }
 }
