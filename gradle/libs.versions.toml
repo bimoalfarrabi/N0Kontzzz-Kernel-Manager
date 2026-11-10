@@ -28,7 +28,7 @@ androidx-test-core = "1.7.0"
 mockito-core = "5.23.0"
 robolectric = "4.16.1"
 material3 = "1.5.0-alpha27"
-room = "2.8.4"
+room = "2.8.5"
 
 [libraries]
 # Core & App
