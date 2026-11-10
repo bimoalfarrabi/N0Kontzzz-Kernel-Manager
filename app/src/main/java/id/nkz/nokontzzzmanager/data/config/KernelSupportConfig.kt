@@ -8,7 +8,8 @@ data class KernelSupportConfig(
         "FusionX",
         "perf+",
         "Oxygen+",
-        "dead-butterflies"
+        "dead-butterflies",
+        "pitchkernel"
     ),
 
     val kernelHosts: Map<String, List<String>> = mapOf(
@@ -43,6 +44,10 @@ data class KernelSupportConfig(
         ),
         "dead-butterflies" to listOf(
             "moon.ell@stargaze"
+        ),
+        "pitchkernel" to listOf(
+            "pitchkernel@github-actions",
+            "build-user@build-host"
         )
     )
 )
