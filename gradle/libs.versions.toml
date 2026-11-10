@@ -1,7 +1,7 @@
 [versions]
 agp = "9.4.0"
-kotlin = "2.4.10"
-ksp = "2.3.11"
+kotlin = "2.4.20"
+ksp = "2.3.12"
 coreKtx = "1.19.0"
 core-splashscreen = "1.2.0"
 appcompat = "1.8.0"
@@ -28,7 +28,7 @@ androidx-test-core = "1.7.0"
 mockito-core = "5.23.0"
 robolectric = "4.16.1"
 material3 = "1.5.0-alpha28"
-room = "2.8.4"
+room = "2.8.5"
 
 [libraries]
 # Core & App
